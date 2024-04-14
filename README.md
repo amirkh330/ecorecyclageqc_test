@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# it is just for test my package
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+### SharedSimpleState Package Documentation
 
-### `npm start`
+## Installation
+To install the sharedsimplestate package, you can use npm or yarn. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Using npm:
+```npm install sharedsimplestate```
 
-### `npm test`
+Using yarn:
+```yarn add sharedsimplestate```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
+Import the necessary dependencies in your React application:
+```
+import React from 'react';                
+import ReactDOM from 'react-dom';
+import { SharedStateProvider } from 'sharedsimplestate';
+```
 
-### `npm run build`
+Wrap your application with the SharedStateProvider component. 
+This component allows you to handle the shared context:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+ReactDOM.render(
+  <SharedStateProvider>
+    <App />
+  </SharedStateProvider>,
+  document.getElementById('root')
+);
+```
+Now, you can use the shared state in your components. To access the shared state, you can use the useSharedState hook:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+import { useSharedState } from 'sharedsimplestate';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+function MyComponent() {
+  const [data, setSData] = useSharedState(initialValue);
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  return <div>{state}</div>;
+}
+```
